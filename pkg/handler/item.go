@@ -8,6 +8,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+type getAllItemsResponse struct {
+	Data []todo.TodoItem `json:"data"`
+}
+
 func (h *Handler) createItem(c *gin.Context) {
 	userId, err := getUserId(c)
 	if err != nil {
@@ -57,7 +61,9 @@ func (h *Handler) getAllItems(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, items)
+	c.JSON(http.StatusOK, getAllItemsResponse{
+		Data: items,
+	})
 }
 
 func (h *Handler) getItemById(c *gin.Context) {
