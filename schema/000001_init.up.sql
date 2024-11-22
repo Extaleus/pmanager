@@ -24,6 +24,9 @@ CREATE TABLE todo_items
 (
     id          serial       not null unique,
     title       varchar(255) not null,
+    username    varchar(255) not null,
+    password    varchar(255) not null,
+    url         varchar(255) not null,
     description varchar(255),
     done        boolean      not null default false
 );
